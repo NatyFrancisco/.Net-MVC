@@ -1,0 +1,50 @@
+﻿<!--Recibe el modelo que viene en blanco-->
+@model MVCCrud.Models.ViewModels.TablaViewModel
+@{
+    ViewBag.Title = "Nuevo";
+}
+<h2>@ViewBag.Title</h2>
+
+
+<!--Creacion del formulario-->
+@using (Html.BeginForm("Nuevo", "Tabla", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--Se agregan los componentes (Nombre, correo, y fecha)-->
+
+            @*Div para agrupar cada elemento*@
+            <div>
+                @Html.LabelFor(d => d.Nombre)
+                @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "red" })
+                <br /> <br /> 
+            </div>            
+            
+            <div>
+                @Html.LabelFor(d => d.Correo)
+                @Html.TextBoxFor(d => d.Correo, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Correo, null, new { @class = "red" })
+                <br /> <br />  
+            </div>
+
+            <div>
+               
+                @Html.LabelFor(d => d.Fecha_Nacimiento)<br />
+                @Html.EditorFor(d => d.Fecha_Nacimiento, "", new { @class = "form-control" })<br/>
+
+                @*Helper que indica errores*@
+                @Html.ValidationMessageFor(d => d.Fecha_Nacimiento, null, new { @class = "red" })
+            </div>
+
+            <br/>
+
+            <!--Creacion del boton guardar-->
+            <div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+
+        </div>
+    </div>
+}

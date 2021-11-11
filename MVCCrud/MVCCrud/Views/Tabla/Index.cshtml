@@ -1,0 +1,72 @@
+﻿<!--Recibe la lista-->
+@model List<MVCCrud.Models.ViewModels.ListTablaViewModel>
+
+@{
+    ViewBag.Title = "Mis datos";
+
+}
+
+<!--Se utiliza bootstrap para darle elstilo-->
+
+
+
+<h2>@ViewBag.Title</h2>
+<a class="nav-link text-dark" href="~/Tabla/Inicio"><font color="black">Pantalla principal</font></a>
+<!--Boton nuevo-->
+<div class="row" style="text-align:right; padding:5px;">
+    <a href="~/Tabla/Nuevo" class="btn btn-primary">Nuevo</a>
+</div>
+
+<div class="row" style="text-align:left; padding:5px;">
+    <a href="~/Vida/Nuevo" class="btn btn-primary">Vida</a>
+</div>
+
+
+<div class="row">
+    <!--Listado de 12 columnas-->
+    <div class="col-md-12">
+        <!--Creacion de la tabla-->
+        <table class="table">
+
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+            </tr>
+
+            <!--Foreach para traer los datos-->
+            @foreach (var oElemento in Model)
+            {
+                <tr>
+                    <td>@oElemento.Id</td>
+                    <td>@oElemento.Nombre</td>
+                    <td>@oElemento.Correo</td>
+
+                    <td>
+                        @*Creacion de los botones*@
+                        <a class="btn btn-default" href="~/Tabla/Editar/@oElemento.Id">Editar</a>
+                        <a class="btn btn-danger" href="~/Tabla/Eliminar/@oElemento.Id">Eliminar</a>
+
+                    </td>
+
+                </tr>
+
+
+
+
+            }
+
+
+
+        </table>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
